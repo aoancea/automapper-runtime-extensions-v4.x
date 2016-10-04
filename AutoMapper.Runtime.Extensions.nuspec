@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>AutoMapper.Runtime.Extensions</id>
+		<version>1.0.0.beta</version>
+		<authors>Alex Oancea</authors>
+		<owners>Alex Oancea</owners>
+		<licenseUrl>https://github.com/aoancea/automapper-runtime-extensions-v4.x/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/aoancea/automapper-runtime-extensions-v4.x</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>An extension to AutoMapper that directly adds the mapping configuration at runtime, without the need to pre-configure them</description>
+		<releaseNotes>An extension to AutoMapper</releaseNotes>
+		<dependencies>
+			<dependency id="AutoMapper" version="4.0.4" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="src\AutoMapper.Runtime.Extensions\bin\Release\AutoMapper.Runtime.Extensions.dll" target="lib\net45" />
+	</files>
+</package>
