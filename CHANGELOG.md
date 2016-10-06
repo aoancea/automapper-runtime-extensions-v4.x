@@ -20,7 +20,7 @@ public void Foo()
     Bar bar = new Bar() { Guid = Guid.NewGuid(), String = "string", Int = 123 };
     Bar newBar = new Bar();
     
-    Mapper.Map(bar, destination);
+    Mapper.Map(bar, newBar);
 }
 ```
 
