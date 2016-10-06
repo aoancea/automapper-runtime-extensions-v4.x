@@ -1,5 +1,5 @@
 # 0.1.0-beta (2016-10-06)
-First working version is released. Its Api provides two public methods
+First working version is released. Its Api provides two public methods:
 
 * DeepCopyTo<T>(destination)
 
@@ -23,6 +23,14 @@ public void Foo()
     Mapper.Map(bar, destination);
 }
 ```
+
+It supports a limited amount of mapping configuration(which are unit tested):
+* mapping Arrays and Lists by having the source and destination of the same type
+* mapping Arrays and Lists by having the source and destination of different types
+* mapping source and destination of the same type
+* mapping source and destination of different types
+* mapping for aggregate types
+* mapping for objects having circular reference
 
 # 0.0.1-alpha (2016-10-05)
 This is a pre-beta release version which contains no actual code. It is a simple test of publishing a NuGet package.
