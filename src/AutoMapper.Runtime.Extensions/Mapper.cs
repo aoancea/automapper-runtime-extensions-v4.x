@@ -5,107 +5,120 @@ using System.Reflection;
 
 namespace AutoMapper.Runtime.Extensions
 {
-	public static class Mapper
-	{
-		private static HashSet<Type> primitiveTypes = new HashSet<Type>(new List<Type>() { typeof(int), typeof(decimal), typeof(string), typeof(Guid), typeof(DateTime), typeof(Enum), typeof(bool) });
-		private static HashSet<Tuple<Type, Type>> mappingsCache = new HashSet<Tuple<Type, Type>>();
+    public static class Mapper
+    {
+        private static HashSet<Type> primitiveTypes = new HashSet<Type>(new List<Type>() { typeof(int), typeof(decimal), typeof(string), typeof(Guid), typeof(DateTime), typeof(Enum), typeof(bool), typeof(char) });
+        private static HashSet<Tuple<Type, Type>> mappingsCache = new HashSet<Tuple<Type, Type>>();
 
-		private static object locker = new object();
+        private static object locker = new object();
 
-		public static TDestination DeepCopyTo<TDestination>(this object source)
-			 where TDestination : class
-		{
-			if (source == null)
-				return default(TDestination);
+        public static TDestination DeepCopyTo<TDestination>(this object source)
+             where TDestination : class
+        {
+            if (source == null)
+                return default(TDestination);
 
-			Type sourceType = source.GetType();
-			Type destinationType = typeof(TDestination);
+            Type sourceType = source.GetType();
+            Type destinationType = typeof(TDestination);
 
-			CreateMap(sourceType, destinationType);
+            CreateMap(sourceType, destinationType);
 
-			return (TDestination)AutoMapper.Mapper.Map(source, sourceType, typeof(TDestination));
-		}
+            return (TDestination)AutoMapper.Mapper.Map(source, sourceType, typeof(TDestination));
+        }
 
-		public static void Map<TSource, TDestination>(TSource source, TDestination destination)
-			where TSource : class
-			where TDestination : class
-		{
-			if (source == default(TSource) || destination == default(TDestination))
-				return;
+        public static void Map<TSource, TDestination>(TSource source, TDestination destination)
+            where TSource : class
+            where TDestination : class
+        {
+            if (source == default(TSource) || destination == default(TDestination))
+                return;
 
-			Type sourceType = source.GetType();
-			Type destinationType = destination.GetType();
+            Type sourceType = source.GetType();
+            Type destinationType = destination.GetType();
 
-			CreateMap(sourceType, destinationType);
+            CreateMap(sourceType, destinationType);
 
-			AutoMapper.Mapper.Map(source, destination);
-		}
+            AutoMapper.Mapper.Map(source, destination);
+        }
 
-		internal static void CreateMap(Type sourceType, Type destinationType)
-		{
-			Tuple<Type, Type> mappingKey = new Tuple<Type, Type>(sourceType, destinationType);
+        internal static void CreateMap(Type sourceType, Type destinationType)
+        {
+            Tuple<Type, Type> mappingKey = new Tuple<Type, Type>(sourceType, destinationType);
 
-			if (!mappingsCache.Contains(mappingKey))
-			{
-				lock (locker)
-				{
-					if (!mappingsCache.Contains(mappingKey) && mappingsCache.Add(mappingKey))
-					{
-						MappingAction(sourceType, destinationType);
-					}
-				}
-			}
-		}
+            if (!mappingsCache.Contains(mappingKey))
+            {
+                lock (locker)
+                {
+                    if (!mappingsCache.Contains(mappingKey) && mappingsCache.Add(mappingKey))
+                    {
+                        MappingAction(sourceType, destinationType);
+                    }
+                }
+            }
+        }
 
-		private static void MappingAction(Type sourceType, Type destinationType)
-		{
-			Type actualSourceType = sourceType;
-			Type actualDestinationType = destinationType;
+        private static void MappingAction(Type sourceType, Type destinationType)
+        {
+            Type actualSourceType = sourceType;
+            Type actualDestinationType = destinationType;
 
-			if (sourceType.IsArray)
-				actualSourceType = sourceType.GetElementType();
+            if (sourceType.IsArray)
+                actualSourceType = sourceType.GetElementType();
 
-			if (destinationType.IsArray)
-				actualDestinationType = destinationType.GetElementType();
+            if (destinationType.IsArray)
+                actualDestinationType = destinationType.GetElementType();
 
-			if (sourceType.IsGenericType && sourceType.GetGenericTypeDefinition() == typeof(List<>))
-				actualSourceType = sourceType.GetGenericArguments()[0];
+            if (sourceType.IsGenericType && sourceType.GetGenericTypeDefinition() == typeof(List<>))
+                actualSourceType = sourceType.GetGenericArguments()[0];
 
-			if (destinationType.IsGenericType && destinationType.GetGenericTypeDefinition() == typeof(List<>))
-				actualDestinationType = destinationType.GetGenericArguments()[0];
+            if (destinationType.IsGenericType && destinationType.GetGenericTypeDefinition() == typeof(List<>))
+                actualDestinationType = destinationType.GetGenericArguments()[0];
 
-			MapProperties(actualSourceType, actualDestinationType);
+            if (sourceType.IsGenericType && sourceType.GetGenericTypeDefinition() == typeof(Dictionary<,>))
+            {
+                actualSourceType = sourceType.GetGenericArguments()[1];
+                actualDestinationType = destinationType.GetGenericArguments()[1];
 
-			typeof(AutoMapper.Mapper)
-				.GetMethods(BindingFlags.Static | BindingFlags.Public)
-				.First(mi => mi.Name == "CreateMap")
-				.MakeGenericMethod(actualSourceType, actualDestinationType)
-				.Invoke(null, null);
-		}
+                MapProperties(actualSourceType, actualDestinationType);
 
-		private static void MapProperties(Type sourceType, Type destinationType)
-		{
-			PropertyInfo[] destinationProperties = GetProperties(destinationType);
+                actualSourceType = typeof(KeyValuePair<,>).MakeGenericType(sourceType.GetGenericArguments()[0], sourceType.GetGenericArguments()[1]);
+                actualDestinationType = typeof(KeyValuePair<,>).MakeGenericType(destinationType.GetGenericArguments()[0], destinationType.GetGenericArguments()[1]);
+            }
+            else
+            {
+                MapProperties(actualSourceType, actualDestinationType);
+            }
 
-			if (destinationProperties.Length > 0)
-			{
-				PropertyInfo[] sourceProperties = GetProperties(sourceType);
+            typeof(AutoMapper.Mapper)
+                   .GetMethods(BindingFlags.Static | BindingFlags.Public)
+                   .First(mi => mi.Name == "CreateMap")
+                   .MakeGenericMethod(actualSourceType, actualDestinationType)
+                   .Invoke(null, null);
+        }
 
-				string[] commonPropertyNames = destinationProperties.Where(dp => sourceProperties.Any(sp => sp.Name == dp.Name)).Select(property => property.Name).ToArray();
+        private static void MapProperties(Type sourceType, Type destinationType)
+        {
+            PropertyInfo[] destinationProperties = GetProperties(destinationType);
 
-				foreach (string propertyName in commonPropertyNames)
-				{
-					Type sourcePropertyType = sourceProperties.First(sourceProperty => sourceProperty.Name == propertyName).PropertyType;
-					Type destinationPropertyType = destinationProperties.First(destinationProperty => destinationProperty.Name == propertyName).PropertyType;
+            if (destinationProperties.Length > 0)
+            {
+                PropertyInfo[] sourceProperties = GetProperties(sourceType);
 
-					CreateMap(sourcePropertyType, destinationPropertyType);
-				}
-			}
-		}
+                string[] commonPropertyNames = destinationProperties.Where(dp => sourceProperties.Any(sp => sp.Name == dp.Name)).Select(property => property.Name).ToArray();
 
-		private static PropertyInfo[] GetProperties(Type type)
-		{
-			return type.GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(property => !primitiveTypes.Contains(property.PropertyType)).ToArray();
-		}
-	}
+                foreach (string propertyName in commonPropertyNames)
+                {
+                    Type sourcePropertyType = sourceProperties.First(sourceProperty => sourceProperty.Name == propertyName).PropertyType;
+                    Type destinationPropertyType = destinationProperties.First(destinationProperty => destinationProperty.Name == propertyName).PropertyType;
+
+                    CreateMap(sourcePropertyType, destinationPropertyType);
+                }
+            }
+        }
+
+        private static PropertyInfo[] GetProperties(Type type)
+        {
+            return type.GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(property => !primitiveTypes.Contains(property.PropertyType)).ToArray();
+        }
+    }
 }
