@@ -1,3 +1,6 @@
+# 0.1.1-beta (2017-03-23)
+Added support for *Dictionary<,>* mapping
+
 # 0.1.0-beta (2016-10-06)
 First working version is released. Its Api provides two public methods:
 
