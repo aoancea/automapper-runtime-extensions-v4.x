@@ -187,7 +187,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         [TestMethod]
         public void DeepCopyTo_WhenSourceAndDestinationHaveDifferentAggregatedTypes_ThenDestinationIsCopied()
         {
-            A.BigClass source = new A.BigClass()
+            A.A_BigClass source = new A.A_BigClass()
             {
                 Bool = true,
                 DateTime = new DateTime(2011, 01, 02),
@@ -196,7 +196,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                 Int = 4141,
                 String = "1142",
 
-                FirstClass = new A.FirstClass()
+                FirstClass = new A.A_FirstClass()
                 {
                     Bool = true,
                     DateTime = new DateTime(2012, 01, 02),
@@ -205,7 +205,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                     Int = 54,
                     String = "8567",
 
-                    FirstClassFirstSubClass = new A.FirstClassFirstSubClass()
+                    FirstClassFirstSubClass = new A.A_FirstClassFirstSubClass()
                     {
                         Bool = true,
                         DateTime = new DateTime(2013, 01, 02),
@@ -214,7 +214,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                         Int = 7345,
                         String = "834"
                     },
-                    FirstClassSecondSubClass = new A.FirstClassSecondSubClass()
+                    FirstClassSecondSubClass = new A.A_FirstClassSecondSubClass()
                     {
                         Bool = true,
                         DateTime = new DateTime(2014, 01, 02),
@@ -225,7 +225,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                     }
                 },
 
-                SecondClass = new A.SecondClass()
+                SecondClass = new A.A_SecondClass()
                 {
                     Bool = true,
                     DateTime = new DateTime(2015, 01, 02),
@@ -234,7 +234,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                     Int = 2346,
                     String = "5",
 
-                    SecondClassFirstSubClass = new A.SecondClassFirstSubClass()
+                    SecondClassFirstSubClass = new A.A_SecondClassFirstSubClass()
                     {
                         Bool = true,
                         DateTime = new DateTime(2016, 01, 02),
@@ -243,7 +243,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                         Int = 8,
                         String = "7089"
                     },
-                    SecondClassSecondSubClass = new A.SecondClassSecondSubClass()
+                    SecondClassSecondSubClass = new A.A_SecondClassSecondSubClass()
                     {
                         Bool = true,
                         DateTime = new DateTime(2017, 01, 02),
@@ -255,7 +255,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                 }
             };
 
-            B.BigClass destination = source.DeepCopyTo<B.BigClass>();
+            B.B_BigClass destination = source.DeepCopyTo<B.B_BigClass>();
 
             Assert.AreNotEqual(source, destination);
             Assert.AreEqual(true, destination.Bool);
@@ -317,7 +317,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         [TestMethod]
         public void DeepCopyTo_WhenSourceAndDestinationHaveTheSameAggregatedType_ThenDestinationIsCopied()
         {
-            A.BigClass source = new A.BigClass()
+            A.A_BigClass source = new A.A_BigClass()
             {
                 Bool = true,
                 DateTime = new DateTime(2011, 01, 02),
@@ -326,7 +326,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                 Int = 4141,
                 String = "1142",
 
-                FirstClass = new A.FirstClass()
+                FirstClass = new A.A_FirstClass()
                 {
                     Bool = true,
                     DateTime = new DateTime(2012, 01, 02),
@@ -335,7 +335,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                     Int = 54,
                     String = "8567",
 
-                    FirstClassFirstSubClass = new A.FirstClassFirstSubClass()
+                    FirstClassFirstSubClass = new A.A_FirstClassFirstSubClass()
                     {
                         Bool = true,
                         DateTime = new DateTime(2013, 01, 02),
@@ -344,7 +344,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                         Int = 7345,
                         String = "834"
                     },
-                    FirstClassSecondSubClass = new A.FirstClassSecondSubClass()
+                    FirstClassSecondSubClass = new A.A_FirstClassSecondSubClass()
                     {
                         Bool = true,
                         DateTime = new DateTime(2014, 01, 02),
@@ -355,7 +355,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                     }
                 },
 
-                SecondClass = new A.SecondClass()
+                SecondClass = new A.A_SecondClass()
                 {
                     Bool = true,
                     DateTime = new DateTime(2015, 01, 02),
@@ -364,7 +364,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                     Int = 2346,
                     String = "5",
 
-                    SecondClassFirstSubClass = new A.SecondClassFirstSubClass()
+                    SecondClassFirstSubClass = new A.A_SecondClassFirstSubClass()
                     {
                         Bool = true,
                         DateTime = new DateTime(2016, 01, 02),
@@ -373,7 +373,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                         Int = 8,
                         String = "7089"
                     },
-                    SecondClassSecondSubClass = new A.SecondClassSecondSubClass()
+                    SecondClassSecondSubClass = new A.A_SecondClassSecondSubClass()
                     {
                         Bool = true,
                         DateTime = new DateTime(2017, 01, 02),
@@ -385,7 +385,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                 }
             };
 
-            A.BigClass destination = source.DeepCopyTo<A.BigClass>();
+            A.A_BigClass destination = source.DeepCopyTo<A.A_BigClass>();
 
             Assert.AreNotEqual(source, destination);
             Assert.AreEqual(true, destination.Bool);
@@ -447,7 +447,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         [TestMethod]
         public void DeepCopyTo_WhenSourceAndDestinationHaveSameTypeWithCircularReference_ThenDestinationIsCopied()
         {
-            A.CircularReference source = new A.CircularReference()
+            A.A_CircularReference source = new A.A_CircularReference()
             {
                 Bool = true,
                 DateTime = new DateTime(2011, 01, 02),
@@ -456,7 +456,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                 Int = 4141,
                 String = "1142",
 
-                CircularReferenceProperty = new A.CircularReference()
+                CircularReferenceProperty = new A.A_CircularReference()
                 {
                     Bool = true,
                     DateTime = new DateTime(2012, 01, 02),
@@ -467,7 +467,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                 }
             };
 
-            A.CircularReference destination = source.DeepCopyTo<A.CircularReference>();
+            A.A_CircularReference destination = source.DeepCopyTo<A.A_CircularReference>();
 
             Assert.AreNotEqual(source, destination);
             Assert.AreEqual(true, destination.Bool);
@@ -491,7 +491,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         [TestMethod]
         public void DeepCopyTo_WhenSourceAndDestinationHaveDifferentTypeWithCircularReference_ThenDestinationIsCopied()
         {
-            A.CircularReference source = new A.CircularReference()
+            A.A_CircularReference source = new A.A_CircularReference()
             {
                 Bool = true,
                 DateTime = new DateTime(2011, 01, 02),
@@ -500,7 +500,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                 Int = 4141,
                 String = "1142",
 
-                CircularReferenceProperty = new A.CircularReference()
+                CircularReferenceProperty = new A.A_CircularReference()
                 {
                     Bool = true,
                     DateTime = new DateTime(2012, 01, 02),
@@ -511,7 +511,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                 }
             };
 
-            B.CircularReference destination = source.DeepCopyTo<B.CircularReference>();
+            B.B_CircularReference destination = source.DeepCopyTo<B.B_CircularReference>();
 
             Assert.AreNotEqual(source, destination);
             Assert.AreEqual(true, destination.Bool);
@@ -536,98 +536,98 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
 
 namespace A
 {
-    internal class BigClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    internal class A_BigClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
-        public FirstClass FirstClass { get; set; }
+        public A_FirstClass FirstClass { get; set; }
 
-        public SecondClass SecondClass { get; set; }
+        public A_SecondClass SecondClass { get; set; }
     }
 
-    internal class FirstClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    internal class A_FirstClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
-        public FirstClassFirstSubClass FirstClassFirstSubClass { get; set; }
+        public A_FirstClassFirstSubClass FirstClassFirstSubClass { get; set; }
 
-        public FirstClassSecondSubClass FirstClassSecondSubClass { get; set; }
+        public A_FirstClassSecondSubClass FirstClassSecondSubClass { get; set; }
     }
 
-    internal class FirstClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
-    {
-
-    }
-
-    internal class FirstClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    internal class A_FirstClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class SecondClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
-    {
-        public SecondClassFirstSubClass SecondClassFirstSubClass { get; set; }
-
-        public SecondClassSecondSubClass SecondClassSecondSubClass { get; set; }
-    }
-
-    internal class SecondClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    internal class A_FirstClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class SecondClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    internal class A_SecondClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+        public A_SecondClassFirstSubClass SecondClassFirstSubClass { get; set; }
+
+        public A_SecondClassSecondSubClass SecondClassSecondSubClass { get; set; }
+    }
+
+    internal class A_SecondClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class CircularReference : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    internal class A_SecondClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
-        public CircularReference CircularReferenceProperty { get; set; }
+
+    }
+
+    internal class A_CircularReference : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+        public A_CircularReference CircularReferenceProperty { get; set; }
     }
 }
 
 namespace B
 {
-    internal class BigClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    internal class B_BigClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
-        public FirstClass FirstClass { get; set; }
+        public B_FirstClass FirstClass { get; set; }
 
-        public SecondClass SecondClass { get; set; }
+        public B_SecondClass SecondClass { get; set; }
     }
 
-    internal class FirstClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    internal class B_FirstClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
-        public FirstClassFirstSubClass FirstClassFirstSubClass { get; set; }
+        public B_FirstClassFirstSubClass FirstClassFirstSubClass { get; set; }
 
-        public FirstClassSecondSubClass FirstClassSecondSubClass { get; set; }
+        public B_FirstClassSecondSubClass FirstClassSecondSubClass { get; set; }
     }
 
-    internal class FirstClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
-    {
-
-    }
-
-    internal class FirstClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    internal class B_FirstClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class SecondClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
-    {
-        public SecondClassFirstSubClass SecondClassFirstSubClass { get; set; }
-
-        public SecondClassSecondSubClass SecondClassSecondSubClass { get; set; }
-    }
-
-    internal class SecondClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    internal class B_FirstClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class SecondClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    internal class B_SecondClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+        public B_SecondClassFirstSubClass SecondClassFirstSubClass { get; set; }
+
+        public B_SecondClassSecondSubClass SecondClassSecondSubClass { get; set; }
+    }
+
+    internal class B_SecondClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class CircularReference : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    internal class B_SecondClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
-        public CircularReference CircularReferenceProperty { get; set; }
+
+    }
+
+    internal class B_CircularReference : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+        public B_CircularReference CircularReferenceProperty { get; set; }
     }
 }
