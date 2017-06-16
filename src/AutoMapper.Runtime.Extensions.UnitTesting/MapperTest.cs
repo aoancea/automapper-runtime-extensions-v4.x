@@ -10,25 +10,25 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         [TestMethod]
         public void DeepCopyTo_SourceAndDestinationTypeAreTheSame_DestinationCopied()
         {
-            Cow source = AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Create_Cow();
+            Cow source = ScenarioHelper.Create_Cow();
 
             Cow destination = source.DeepCopyTo<Cow>();
 
             Assert.AreNotEqual(source, destination);
 
-            AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Assert_Cow(destination);
+            ScenarioHelper.Assert_Cow(destination);
         }
 
         [TestMethod]
         public void DeepCopyTo_SourceAndDestinationAreDifferentTypeButContainTheSameProperties_DestinationCopied()
         {
-            Cow source = AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Create_Cow();
+            Cow source = ScenarioHelper.Create_Cow();
 
             Mule destination = source.DeepCopyTo<Mule>();
 
             Assert.AreNotEqual(source, destination);
 
-            AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Assert_Mule(destination);
+            ScenarioHelper.Assert_Mule(destination);
         }
 
         [TestMethod]
@@ -36,7 +36,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             Cow[] source = new Cow[1]
             {
-                 AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Create_Cow()
+                 ScenarioHelper.Create_Cow()
             };
 
             Cow[] destination = source.DeepCopyTo<Cow[]>();
@@ -45,7 +45,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Length);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Assert_Cow(destination[0]);
+            ScenarioHelper.Assert_Cow(destination[0]);
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             Cow[] source = new Cow[1]
             {
-                 AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Create_Cow()
+                 ScenarioHelper.Create_Cow()
             };
 
             Mule[] destination = source.DeepCopyTo<Mule[]>();
@@ -62,7 +62,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Length);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Assert_Mule(destination[0]);
+            ScenarioHelper.Assert_Mule(destination[0]);
         }
 
         [TestMethod]
@@ -70,7 +70,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             List<Cow> source = new List<Cow>
             {
-                 AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Create_Cow()
+                 ScenarioHelper.Create_Cow()
             };
 
             List<Cow> destination = source.DeepCopyTo<List<Cow>>();
@@ -79,7 +79,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Count);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Assert_Cow(destination[0]);
+            ScenarioHelper.Assert_Cow(destination[0]);
         }
 
         [TestMethod]
@@ -87,7 +87,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             List<Cow> source = new List<Cow>
             {
-                 AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Create_Cow()
+                 ScenarioHelper.Create_Cow()
             };
 
             List<Mule> destination = source.DeepCopyTo<List<Mule>>();
@@ -96,7 +96,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Count);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Assert_Mule(destination[0]);
+            ScenarioHelper.Assert_Mule(destination[0]);
         }
 
         [TestMethod]
@@ -104,7 +104,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             Cow[] source = new Cow[1]
             {
-                 AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Create_Cow()
+                 ScenarioHelper.Create_Cow()
             };
 
             List<Cow> destination = source.DeepCopyTo<List<Cow>>();
@@ -113,7 +113,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Count);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Assert_Cow(destination[0]);
+            ScenarioHelper.Assert_Cow(destination[0]);
         }
 
         [TestMethod]
@@ -121,7 +121,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             Cow[] source = new Cow[1]
             {
-                 AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Create_Cow()
+                 ScenarioHelper.Create_Cow()
             };
 
             List<Mule> destination = source.DeepCopyTo<List<Mule>>();
@@ -130,7 +130,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Count);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Assert_Mule(destination[0]);
+            ScenarioHelper.Assert_Mule(destination[0]);
         }
 
         [TestMethod]
@@ -138,7 +138,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             List<Cow> source = new List<Cow>
             {
-                 AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Create_Cow()
+                 ScenarioHelper.Create_Cow()
             };
 
             Cow[] destination = source.DeepCopyTo<Cow[]>();
@@ -147,7 +147,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Length);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Assert_Cow(destination[0]);
+            ScenarioHelper.Assert_Cow(destination[0]);
         }
 
         [TestMethod]
@@ -155,7 +155,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             List<Cow> source = new List<Cow>
             {
-                 AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Create_Cow()
+                 ScenarioHelper.Create_Cow()
             };
 
             Mule[] destination = source.DeepCopyTo<Mule[]>();
@@ -164,7 +164,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Length);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            AutoMapper.Runtime.Extensions.UnitTesting.ScenarioHelper.Assert_Mule(destination[0]);
+            ScenarioHelper.Assert_Mule(destination[0]);
         }
 
         [TestMethod]
