@@ -7,7 +7,11 @@ namespace AutoMapper.Runtime.Extensions
 {
     public static class Mapper
     {
-        private static HashSet<Type> primitiveTypes = new HashSet<Type>(new List<Type>() { typeof(int), typeof(decimal), typeof(string), typeof(Guid), typeof(DateTime), typeof(Enum), typeof(bool), typeof(char) });
+        private static HashSet<Type> primitiveTypes = new HashSet<Type>(new List<Type>()
+        {
+            typeof(int), typeof(decimal), typeof(string), typeof(Guid), typeof(DateTime), typeof(Enum), typeof(bool), typeof(char),
+            typeof(int?), typeof(decimal?), typeof(Guid?), typeof(DateTime?), typeof(bool?), typeof(char?)
+        });
         private static HashSet<Tuple<Type, Type>> mappingsCache = new HashSet<Tuple<Type, Type>>();
 
         private static object locker = new object();

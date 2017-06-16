@@ -19,6 +19,20 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
 
         public Dictionary<Guid, string> Dictionary { get; set; }
 
+        #region Nullable primitives
+
+        public int? IntNullable { get; set; }
+
+        public decimal? DecimalNullable { get; set; }
+
+        public DateTime DateTimeNullable { get; set; }
+
+        public Guid? GuidNullable { get; set; }
+
+        public bool? BoolNullable { get; set; }
+
+        #endregion
+
         #region Array of primitives
         public int[] IntArray { get; set; }
 

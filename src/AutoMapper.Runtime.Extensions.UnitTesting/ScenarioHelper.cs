@@ -18,6 +18,13 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
                 String = Constants.String.value1,
                 Dictionary = new Dictionary<Guid, string>() { { Constants.Guid.value3, "value1" } },
 
+                // Nullable primitives
+                BoolNullable = Constants.Bool.value1,
+                DateTimeNullable = Constants.DateTime.value1,
+                DecimalNullable = Constants.Decimal.value1,
+                GuidNullable = Constants.Guid.value1,
+                IntNullable = Constants.Int.value1,
+
                 // Array of primitives
                 BoolArray = new bool[] { Constants.Bool.value1, Constants.Bool.value2 },
                 DateTimeArray = new DateTime[] { Constants.DateTime.value1, Constants.DateTime.value2 },
@@ -46,6 +53,14 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(Constants.String.value1, cow.String);
             Assert.AreEqual("value1", cow.Dictionary[Constants.Guid.value3]);
 
+            // Nullable primitives
+            Assert.AreEqual(Constants.Bool.value1, cow.BoolNullable);
+            Assert.AreEqual(Constants.DateTime.value1, cow.DateTimeNullable);
+            Assert.AreEqual(Constants.Decimal.value1, cow.DecimalNullable);
+            Assert.AreEqual(Constants.Guid.value1, cow.GuidNullable);
+            Assert.AreEqual(Constants.Int.value1, cow.IntNullable);
+
+            // Array of primitives
             Assert.AreEqual(Constants.Bool.value1, cow.BoolArray[0]);
             Assert.AreEqual(Constants.Bool.value2, cow.BoolArray[1]);
             Assert.AreEqual(Constants.DateTime.value1, cow.DateTimeArray[0]);
@@ -59,6 +74,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(Constants.String.value1, cow.StringArray[0]);
             Assert.AreEqual(Constants.String.value2, cow.StringArray[1]);
 
+            // List of primitives
             Assert.AreEqual(Constants.Bool.value1, cow.BoolList[0]);
             Assert.AreEqual(Constants.Bool.value2, cow.BoolList[1]);
             Assert.AreEqual(Constants.DateTime.value1, cow.DateTimeList[0]);
@@ -83,6 +99,14 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(Constants.String.value1, mule.String);
             Assert.AreEqual("value1", mule.Dictionary[Constants.Guid.value3]);
 
+            // Nullable primitives
+            Assert.AreEqual(Constants.Bool.value1, mule.BoolNullable);
+            Assert.AreEqual(Constants.DateTime.value1, mule.DateTimeNullable);
+            Assert.AreEqual(Constants.Decimal.value1, mule.DecimalNullable);
+            Assert.AreEqual(Constants.Guid.value1, mule.GuidNullable);
+            Assert.AreEqual(Constants.Int.value1, mule.IntNullable);
+
+            // Array of primitives
             Assert.AreEqual(Constants.Bool.value1, mule.BoolArray[0]);
             Assert.AreEqual(Constants.Bool.value2, mule.BoolArray[1]);
             Assert.AreEqual(Constants.DateTime.value1, mule.DateTimeArray[0]);
@@ -96,6 +120,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(Constants.String.value1, mule.StringArray[0]);
             Assert.AreEqual(Constants.String.value2, mule.StringArray[1]);
 
+            // List of primitives
             Assert.AreEqual(Constants.Bool.value1, mule.BoolList[0]);
             Assert.AreEqual(Constants.Bool.value2, mule.BoolList[1]);
             Assert.AreEqual(Constants.DateTime.value1, mule.DateTimeList[0]);
