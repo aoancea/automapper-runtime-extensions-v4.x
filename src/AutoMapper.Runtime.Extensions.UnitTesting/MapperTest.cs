@@ -10,25 +10,25 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         [TestMethod]
         public void DeepCopyTo_SourceAndDestinationTypeAreTheSame_DestinationCopied()
         {
-            Cow source = Helpers.Cow.Create();
+            Cow source = AutoMapper.Runtime.Extensions.UnitTesting.Cow.Create();
 
             Cow destination = source.DeepCopyTo<Cow>();
 
             Assert.AreNotEqual(source, destination);
 
-            Helpers.Cow.Assert(destination);
+            AutoMapper.Runtime.Extensions.UnitTesting.Cow.Assert(destination);
         }
 
         [TestMethod]
         public void DeepCopyTo_SourceAndDestinationAreDifferentTypeButContainTheSameProperties_DestinationCopied()
         {
-            Cow source = Helpers.Cow.Create();
+            Cow source = AutoMapper.Runtime.Extensions.UnitTesting.Cow.Create();
 
             Mule destination = source.DeepCopyTo<Mule>();
 
             Assert.AreNotEqual(source, destination);
 
-            Helpers.Mule.Assert(destination);
+            AutoMapper.Runtime.Extensions.UnitTesting.Mule.Assert(destination);
         }
 
         [TestMethod]
@@ -36,7 +36,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             Cow[] source = new Cow[1]
             {
-                 Helpers.Cow.Create()
+                 AutoMapper.Runtime.Extensions.UnitTesting.Cow.Create()
             };
 
             Cow[] destination = source.DeepCopyTo<Cow[]>();
@@ -45,7 +45,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Length);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            Helpers.Cow.Assert(destination[0]);
+            AutoMapper.Runtime.Extensions.UnitTesting.Cow.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             Cow[] source = new Cow[1]
             {
-                 Helpers.Cow.Create()
+                 AutoMapper.Runtime.Extensions.UnitTesting.Cow.Create()
             };
 
             Mule[] destination = source.DeepCopyTo<Mule[]>();
@@ -62,7 +62,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Length);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            Helpers.Mule.Assert(destination[0]);
+            AutoMapper.Runtime.Extensions.UnitTesting.Mule.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -70,7 +70,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             List<Cow> source = new List<Cow>
             {
-                 Helpers.Cow.Create()
+                 AutoMapper.Runtime.Extensions.UnitTesting.Cow.Create()
             };
 
             List<Cow> destination = source.DeepCopyTo<List<Cow>>();
@@ -79,7 +79,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Count);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            Helpers.Cow.Assert(destination[0]);
+            AutoMapper.Runtime.Extensions.UnitTesting.Cow.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -87,7 +87,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             List<Cow> source = new List<Cow>
             {
-                 Helpers.Cow.Create()
+                 AutoMapper.Runtime.Extensions.UnitTesting.Cow.Create()
             };
 
             List<Mule> destination = source.DeepCopyTo<List<Mule>>();
@@ -96,7 +96,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Count);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            Helpers.Mule.Assert(destination[0]);
+            AutoMapper.Runtime.Extensions.UnitTesting.Mule.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -104,7 +104,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             Cow[] source = new Cow[1]
             {
-                 Helpers.Cow.Create()
+                 AutoMapper.Runtime.Extensions.UnitTesting.Cow.Create()
             };
 
             List<Cow> destination = source.DeepCopyTo<List<Cow>>();
@@ -113,7 +113,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Count);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            Helpers.Cow.Assert(destination[0]);
+            AutoMapper.Runtime.Extensions.UnitTesting.Cow.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -121,7 +121,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             Cow[] source = new Cow[1]
             {
-                 Helpers.Cow.Create()
+                 AutoMapper.Runtime.Extensions.UnitTesting.Cow.Create()
             };
 
             List<Mule> destination = source.DeepCopyTo<List<Mule>>();
@@ -130,7 +130,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Count);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            Helpers.Mule.Assert(destination[0]);
+            AutoMapper.Runtime.Extensions.UnitTesting.Mule.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -138,7 +138,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             List<Cow> source = new List<Cow>
             {
-                 Helpers.Cow.Create()
+                 AutoMapper.Runtime.Extensions.UnitTesting.Cow.Create()
             };
 
             Cow[] destination = source.DeepCopyTo<Cow[]>();
@@ -147,7 +147,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Length);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            Helpers.Cow.Assert(destination[0]);
+            AutoMapper.Runtime.Extensions.UnitTesting.Cow.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -155,7 +155,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             List<Cow> source = new List<Cow>
             {
-                 Helpers.Cow.Create()
+                 AutoMapper.Runtime.Extensions.UnitTesting.Cow.Create()
             };
 
             Mule[] destination = source.DeepCopyTo<Mule[]>();
@@ -164,7 +164,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(1, destination.Length);
             Assert.AreNotEqual(source[0], destination[0]);
 
-            Helpers.Mule.Assert(destination[0]);
+            AutoMapper.Runtime.Extensions.UnitTesting.Mule.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -533,12 +533,12 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         }
 
 
-        internal class Cow : Helpers.BaseClass
+        internal class Cow : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
         {
 
         }
 
-        internal class Mule : Helpers.BaseClass
+        internal class Mule : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
         {
 
         }
@@ -547,48 +547,48 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
 
 namespace A
 {
-    internal class BigClass : Helpers.BaseClass
+    internal class BigClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
         public FirstClass FirstClass { get; set; }
 
         public SecondClass SecondClass { get; set; }
     }
 
-    internal class FirstClass : Helpers.BaseClass
+    internal class FirstClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
         public FirstClassFirstSubClass FirstClassFirstSubClass { get; set; }
 
         public FirstClassSecondSubClass FirstClassSecondSubClass { get; set; }
     }
 
-    internal class FirstClassFirstSubClass : Helpers.BaseClass
+    internal class FirstClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class FirstClassSecondSubClass : Helpers.BaseClass
+    internal class FirstClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class SecondClass : Helpers.BaseClass
+    internal class SecondClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
         public SecondClassFirstSubClass SecondClassFirstSubClass { get; set; }
 
         public SecondClassSecondSubClass SecondClassSecondSubClass { get; set; }
     }
 
-    internal class SecondClassFirstSubClass : Helpers.BaseClass
+    internal class SecondClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class SecondClassSecondSubClass : Helpers.BaseClass
+    internal class SecondClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class CircularReference : Helpers.BaseClass
+    internal class CircularReference : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
         public CircularReference CircularReferenceProperty { get; set; }
     }
@@ -596,100 +596,55 @@ namespace A
 
 namespace B
 {
-    internal class BigClass : Helpers.BaseClass
+    internal class BigClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
         public FirstClass FirstClass { get; set; }
 
         public SecondClass SecondClass { get; set; }
     }
 
-    internal class FirstClass : Helpers.BaseClass
+    internal class FirstClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
         public FirstClassFirstSubClass FirstClassFirstSubClass { get; set; }
 
         public FirstClassSecondSubClass FirstClassSecondSubClass { get; set; }
     }
 
-    internal class FirstClassFirstSubClass : Helpers.BaseClass
+    internal class FirstClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class FirstClassSecondSubClass : Helpers.BaseClass
+    internal class FirstClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class SecondClass : Helpers.BaseClass
+    internal class SecondClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
         public SecondClassFirstSubClass SecondClassFirstSubClass { get; set; }
 
         public SecondClassSecondSubClass SecondClassSecondSubClass { get; set; }
     }
 
-    internal class SecondClassFirstSubClass : Helpers.BaseClass
+    internal class SecondClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class SecondClassSecondSubClass : Helpers.BaseClass
+    internal class SecondClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
 
     }
 
-    internal class CircularReference : Helpers.BaseClass
+    internal class CircularReference : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
     {
         public CircularReference CircularReferenceProperty { get; set; }
     }
 }
 
-namespace Helpers
+namespace AutoMapper.Runtime.Extensions.UnitTesting
 {
-    internal class BaseClass
-    {
-        public int Int { get; set; }
-
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
-
-        public Dictionary<Guid, string> Dictionary { get; set; }
-
-        #region Array of primitives
-        public int[] IntArray { get; set; }
-
-        public decimal[] DecimalArray { get; set; }
-
-        public string[] StringArray { get; set; }
-
-        public DateTime[] DateTimeArray { get; set; }
-
-        public Guid[] GuidArray { get; set; }
-
-        public bool[] BoolArray { get; set; }
-        #endregion
-
-        #region List of primitives
-        public List<int> IntList { get; set; }
-
-        public List<decimal> DecimalList { get; set; }
-
-        public List<string> StringList { get; set; }
-
-        public List<DateTime> DateTimeList { get; set; }
-
-        public List<Guid> GuidList { get; set; }
-
-        public List<bool> BoolList { get; set; }
-        #endregion
-    }
-
     internal class Cow
     {
         public static AutoMapper.Runtime.Extensions.UnitTesting.MapperTest.Cow Create()
