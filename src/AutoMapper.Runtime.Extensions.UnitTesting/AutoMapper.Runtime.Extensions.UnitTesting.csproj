@@ -55,6 +55,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="MapperTest.cs" />
     <Compile Include="Models.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
