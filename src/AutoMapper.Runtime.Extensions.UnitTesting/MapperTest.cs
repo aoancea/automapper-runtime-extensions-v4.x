@@ -10,53 +10,25 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         [TestMethod]
         public void DeepCopyTo_SourceAndDestinationTypeAreTheSame_DestinationCopied()
         {
-            Cow source = new Cow()
-            {
-                Bool = true,
-                DateTime = new DateTime(2010, 01, 02),
-                Decimal = 10.10M,
-                Guid = new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"),
-                Int = 123,
-                String = "123",
-                Dictionary = new Dictionary<Guid, string>() { { new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF"), "value1" } }
-            };
+            Cow source = Helpers.Cow.Create();
 
             Cow destination = source.DeepCopyTo<Cow>();
 
             Assert.AreNotEqual(source, destination);
-            Assert.AreEqual(true, destination.Bool);
-            Assert.AreEqual(new DateTime(2010, 01, 02), destination.DateTime);
-            Assert.AreEqual(10.10M, destination.Decimal);
-            Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), destination.Guid);
-            Assert.AreEqual(123, destination.Int);
-            Assert.AreEqual("123", destination.String);
-            Assert.AreEqual("value1", destination.Dictionary[new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF")]);
+
+            Helpers.Cow.Assert(destination);
         }
 
         [TestMethod]
         public void DeepCopyTo_SourceAndDestinationAreDifferentTypeButContainTheSameProperties_DestinationCopied()
         {
-            Cow source = new Cow()
-            {
-                Bool = true,
-                DateTime = new DateTime(2010, 01, 02),
-                Decimal = 10.10M,
-                Guid = new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"),
-                Int = 123,
-                String = "123",
-                Dictionary = new Dictionary<Guid, string>() { { new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF"), "value1" } }
-            };
+            Cow source = Helpers.Cow.Create();
 
             Mule destination = source.DeepCopyTo<Mule>();
 
             Assert.AreNotEqual(source, destination);
-            Assert.AreEqual(true, destination.Bool);
-            Assert.AreEqual(new DateTime(2010, 01, 02), destination.DateTime);
-            Assert.AreEqual(10.10M, destination.Decimal);
-            Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), destination.Guid);
-            Assert.AreEqual(123, destination.Int);
-            Assert.AreEqual("123", destination.String);
-            Assert.AreEqual("value1", destination.Dictionary[new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF")]);
+
+            Helpers.Mule.Assert(destination);
         }
 
         [TestMethod]
@@ -64,16 +36,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             Cow[] source = new Cow[1]
             {
-                 new Cow()
-                {
-                    Bool = true,
-                    DateTime = new DateTime(2010, 01, 02),
-                    Decimal = 10.10M,
-                    Guid = new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"),
-                    Int = 123,
-                    String = "123",
-                    Dictionary = new Dictionary<Guid, string>() { { new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF"), "value1" } }
-                }
+                 Helpers.Cow.Create()
             };
 
             Cow[] destination = source.DeepCopyTo<Cow[]>();
@@ -81,13 +44,8 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreNotEqual(source, destination);
             Assert.AreEqual(1, destination.Length);
             Assert.AreNotEqual(source[0], destination[0]);
-            Assert.AreEqual(true, destination[0].Bool);
-            Assert.AreEqual(new DateTime(2010, 01, 02), destination[0].DateTime);
-            Assert.AreEqual(10.10M, destination[0].Decimal);
-            Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), destination[0].Guid);
-            Assert.AreEqual(123, destination[0].Int);
-            Assert.AreEqual("123", destination[0].String);
-            Assert.AreEqual("value1", destination[0].Dictionary[new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF")]);
+
+            Helpers.Cow.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -95,16 +53,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             Cow[] source = new Cow[1]
             {
-                 new Cow()
-                {
-                    Bool = true,
-                    DateTime = new DateTime(2010, 01, 02),
-                    Decimal = 10.10M,
-                    Guid = new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"),
-                    Int = 123,
-                    String = "123",
-                    Dictionary = new Dictionary<Guid, string>() { { new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF"), "value1" } }
-                }
+                 Helpers.Cow.Create()
             };
 
             Mule[] destination = source.DeepCopyTo<Mule[]>();
@@ -112,13 +61,8 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreNotEqual(source, destination);
             Assert.AreEqual(1, destination.Length);
             Assert.AreNotEqual(source[0], destination[0]);
-            Assert.AreEqual(true, destination[0].Bool);
-            Assert.AreEqual(new DateTime(2010, 01, 02), destination[0].DateTime);
-            Assert.AreEqual(10.10M, destination[0].Decimal);
-            Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), destination[0].Guid);
-            Assert.AreEqual(123, destination[0].Int);
-            Assert.AreEqual("123", destination[0].String);
-            Assert.AreEqual("value1", destination[0].Dictionary[new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF")]);
+
+            Helpers.Mule.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -126,16 +70,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             List<Cow> source = new List<Cow>
             {
-                 new Cow()
-                {
-                    Bool = true,
-                    DateTime = new DateTime(2010, 01, 02),
-                    Decimal = 10.10M,
-                    Guid = new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"),
-                    Int = 123,
-                    String = "123",
-                    Dictionary = new Dictionary<Guid, string>() { { new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF"), "value1" } }
-                }
+                 Helpers.Cow.Create()
             };
 
             List<Cow> destination = source.DeepCopyTo<List<Cow>>();
@@ -143,13 +78,8 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreNotEqual(source, destination);
             Assert.AreEqual(1, destination.Count);
             Assert.AreNotEqual(source[0], destination[0]);
-            Assert.AreEqual(true, destination[0].Bool);
-            Assert.AreEqual(new DateTime(2010, 01, 02), destination[0].DateTime);
-            Assert.AreEqual(10.10M, destination[0].Decimal);
-            Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), destination[0].Guid);
-            Assert.AreEqual(123, destination[0].Int);
-            Assert.AreEqual("123", destination[0].String);
-            Assert.AreEqual("value1", destination[0].Dictionary[new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF")]);
+
+            Helpers.Cow.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -157,16 +87,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             List<Cow> source = new List<Cow>
             {
-                 new Cow()
-                {
-                    Bool = true,
-                    DateTime = new DateTime(2010, 01, 02),
-                    Decimal = 10.10M,
-                    Guid = new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"),
-                    Int = 123,
-                    String = "123",
-                    Dictionary = new Dictionary<Guid, string>() { { new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF"), "value1" } }
-                }
+                 Helpers.Cow.Create()
             };
 
             List<Mule> destination = source.DeepCopyTo<List<Mule>>();
@@ -174,13 +95,8 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreNotEqual(source, destination);
             Assert.AreEqual(1, destination.Count);
             Assert.AreNotEqual(source[0], destination[0]);
-            Assert.AreEqual(true, destination[0].Bool);
-            Assert.AreEqual(new DateTime(2010, 01, 02), destination[0].DateTime);
-            Assert.AreEqual(10.10M, destination[0].Decimal);
-            Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), destination[0].Guid);
-            Assert.AreEqual(123, destination[0].Int);
-            Assert.AreEqual("123", destination[0].String);
-            Assert.AreEqual("value1", destination[0].Dictionary[new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF")]);
+
+            Helpers.Mule.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -188,16 +104,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             Cow[] source = new Cow[1]
             {
-                 new Cow()
-                {
-                    Bool = true,
-                    DateTime = new DateTime(2010, 01, 02),
-                    Decimal = 10.10M,
-                    Guid = new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"),
-                    Int = 123,
-                    String = "123",
-                    Dictionary = new Dictionary<Guid, string>() { { new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF"), "value1" } }
-                }
+                 Helpers.Cow.Create()
             };
 
             List<Cow> destination = source.DeepCopyTo<List<Cow>>();
@@ -205,13 +112,8 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreNotEqual(source, destination);
             Assert.AreEqual(1, destination.Count);
             Assert.AreNotEqual(source[0], destination[0]);
-            Assert.AreEqual(true, destination[0].Bool);
-            Assert.AreEqual(new DateTime(2010, 01, 02), destination[0].DateTime);
-            Assert.AreEqual(10.10M, destination[0].Decimal);
-            Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), destination[0].Guid);
-            Assert.AreEqual(123, destination[0].Int);
-            Assert.AreEqual("123", destination[0].String);
-            Assert.AreEqual("value1", destination[0].Dictionary[new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF")]);
+
+            Helpers.Cow.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -219,16 +121,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             Cow[] source = new Cow[1]
             {
-                 new Cow()
-                {
-                    Bool = true,
-                    DateTime = new DateTime(2010, 01, 02),
-                    Decimal = 10.10M,
-                    Guid = new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"),
-                    Int = 123,
-                    String = "123",
-                    Dictionary = new Dictionary<Guid, string>() { { new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF"), "value1" } }
-                }
+                 Helpers.Cow.Create()
             };
 
             List<Mule> destination = source.DeepCopyTo<List<Mule>>();
@@ -236,13 +129,8 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreNotEqual(source, destination);
             Assert.AreEqual(1, destination.Count);
             Assert.AreNotEqual(source[0], destination[0]);
-            Assert.AreEqual(true, destination[0].Bool);
-            Assert.AreEqual(new DateTime(2010, 01, 02), destination[0].DateTime);
-            Assert.AreEqual(10.10M, destination[0].Decimal);
-            Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), destination[0].Guid);
-            Assert.AreEqual(123, destination[0].Int);
-            Assert.AreEqual("123", destination[0].String);
-            Assert.AreEqual("value1", destination[0].Dictionary[new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF")]);
+
+            Helpers.Mule.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -250,16 +138,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             List<Cow> source = new List<Cow>
             {
-                 new Cow()
-                {
-                    Bool = true,
-                    DateTime = new DateTime(2010, 01, 02),
-                    Decimal = 10.10M,
-                    Guid = new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"),
-                    Int = 123,
-                    String = "123",
-                    Dictionary = new Dictionary<Guid, string>() { { new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF"), "value1" } }
-                }
+                 Helpers.Cow.Create()
             };
 
             Cow[] destination = source.DeepCopyTo<Cow[]>();
@@ -267,13 +146,8 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreNotEqual(source, destination);
             Assert.AreEqual(1, destination.Length);
             Assert.AreNotEqual(source[0], destination[0]);
-            Assert.AreEqual(true, destination[0].Bool);
-            Assert.AreEqual(new DateTime(2010, 01, 02), destination[0].DateTime);
-            Assert.AreEqual(10.10M, destination[0].Decimal);
-            Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), destination[0].Guid);
-            Assert.AreEqual(123, destination[0].Int);
-            Assert.AreEqual("123", destination[0].String);
-            Assert.AreEqual("value1", destination[0].Dictionary[new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF")]);
+
+            Helpers.Cow.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -281,16 +155,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         {
             List<Cow> source = new List<Cow>
             {
-                 new Cow()
-                {
-                    Bool = true,
-                    DateTime = new DateTime(2010, 01, 02),
-                    Decimal = 10.10M,
-                    Guid = new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"),
-                    Int = 123,
-                    String = "123",
-                    Dictionary = new Dictionary<Guid, string>() { { new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF"), "value1" } }
-                }
+                 Helpers.Cow.Create()
             };
 
             Mule[] destination = source.DeepCopyTo<Mule[]>();
@@ -298,13 +163,8 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreNotEqual(source, destination);
             Assert.AreEqual(1, destination.Length);
             Assert.AreNotEqual(source[0], destination[0]);
-            Assert.AreEqual(true, destination[0].Bool);
-            Assert.AreEqual(new DateTime(2010, 01, 02), destination[0].DateTime);
-            Assert.AreEqual(10.10M, destination[0].Decimal);
-            Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), destination[0].Guid);
-            Assert.AreEqual(123, destination[0].Int);
-            Assert.AreEqual("123", destination[0].String);
-            Assert.AreEqual("value1", destination[0].Dictionary[new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF")]);
+
+            Helpers.Mule.Assert(destination[0]);
         }
 
         [TestMethod]
@@ -671,315 +531,302 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
 
             Assert.IsNull(destination.CircularReferenceProperty.CircularReferenceProperty);
         }
-        
 
-        internal class Cow
+
+        internal class Cow : Helpers.BaseClass
         {
-            public int Int { get; set; }
 
-            public decimal Decimal { get; set; }
-
-            public string String { get; set; }
-
-            public DateTime DateTime { get; set; }
-
-            public Guid Guid { get; set; }
-
-            public bool Bool { get; set; }
-
-            public Dictionary<Guid, string> Dictionary { get; set; }
         }
 
-
-        internal class Mule
+        internal class Mule : Helpers.BaseClass
         {
-            public int Int { get; set; }
 
-            public decimal Decimal { get; set; }
-
-            public string String { get; set; }
-
-            public DateTime DateTime { get; set; }
-
-            public Guid Guid { get; set; }
-
-            public bool Bool { get; set; }
-
-            public Dictionary<Guid, string> Dictionary { get; set; }
         }
     }
 }
 
 namespace A
 {
-    internal class BigClass
+    internal class BigClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
-
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
-
         public FirstClass FirstClass { get; set; }
 
         public SecondClass SecondClass { get; set; }
     }
 
-    internal class FirstClass
+    internal class FirstClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
-
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
-
         public FirstClassFirstSubClass FirstClassFirstSubClass { get; set; }
 
         public FirstClassSecondSubClass FirstClassSecondSubClass { get; set; }
     }
 
-    internal class FirstClassFirstSubClass
+    internal class FirstClassFirstSubClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
 
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
     }
 
-    internal class FirstClassSecondSubClass
+    internal class FirstClassSecondSubClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
 
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
     }
 
-    internal class SecondClass
+    internal class SecondClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
-
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
-
         public SecondClassFirstSubClass SecondClassFirstSubClass { get; set; }
 
         public SecondClassSecondSubClass SecondClassSecondSubClass { get; set; }
     }
 
-    internal class SecondClassFirstSubClass
+    internal class SecondClassFirstSubClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
 
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
     }
 
-    internal class SecondClassSecondSubClass
+    internal class SecondClassSecondSubClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
 
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
     }
 
-    internal class CircularReference
+    internal class CircularReference : Helpers.BaseClass
     {
-        public int Int { get; set; }
-
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
-
         public CircularReference CircularReferenceProperty { get; set; }
     }
 }
 
 namespace B
 {
-    internal class BigClass
+    internal class BigClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
-
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
-
         public FirstClass FirstClass { get; set; }
 
         public SecondClass SecondClass { get; set; }
     }
 
-    internal class FirstClass
+    internal class FirstClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
-
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
-
         public FirstClassFirstSubClass FirstClassFirstSubClass { get; set; }
 
         public FirstClassSecondSubClass FirstClassSecondSubClass { get; set; }
     }
 
-    internal class FirstClassFirstSubClass
+    internal class FirstClassFirstSubClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
 
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
     }
 
-    internal class FirstClassSecondSubClass
+    internal class FirstClassSecondSubClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
 
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
     }
 
-    internal class SecondClass
+    internal class SecondClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
-
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
-
         public SecondClassFirstSubClass SecondClassFirstSubClass { get; set; }
 
         public SecondClassSecondSubClass SecondClassSecondSubClass { get; set; }
     }
 
-    internal class SecondClassFirstSubClass
+    internal class SecondClassFirstSubClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
 
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
     }
 
-    internal class SecondClassSecondSubClass
+    internal class SecondClassSecondSubClass : Helpers.BaseClass
     {
-        public int Int { get; set; }
 
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
     }
 
-    internal class CircularReference
+    internal class CircularReference : Helpers.BaseClass
     {
-        public int Int { get; set; }
-
-        public decimal Decimal { get; set; }
-
-        public string String { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public Guid Guid { get; set; }
-
-        public bool Bool { get; set; }
-
         public CircularReference CircularReferenceProperty { get; set; }
+    }
+}
+
+namespace Helpers
+{
+    internal class BaseClass
+    {
+        public int Int { get; set; }
+
+        public decimal Decimal { get; set; }
+
+        public string String { get; set; }
+
+        public DateTime DateTime { get; set; }
+
+        public Guid Guid { get; set; }
+
+        public bool Bool { get; set; }
+
+        public Dictionary<Guid, string> Dictionary { get; set; }
+
+        #region Array of primitives
+        public int[] IntArray { get; set; }
+
+        public decimal[] DecimalArray { get; set; }
+
+        public string[] StringArray { get; set; }
+
+        public DateTime[] DateTimeArray { get; set; }
+
+        public Guid[] GuidArray { get; set; }
+
+        public bool[] BoolArray { get; set; }
+        #endregion
+
+        #region List of primitives
+        public List<int> IntList { get; set; }
+
+        public List<decimal> DecimalList { get; set; }
+
+        public List<string> StringList { get; set; }
+
+        public List<DateTime> DateTimeList { get; set; }
+
+        public List<Guid> GuidList { get; set; }
+
+        public List<bool> BoolList { get; set; }
+        #endregion
+    }
+
+    internal class Cow
+    {
+        public static AutoMapper.Runtime.Extensions.UnitTesting.MapperTest.Cow Create()
+        {
+            return new AutoMapper.Runtime.Extensions.UnitTesting.MapperTest.Cow()
+            {
+                Bool = true,
+                DateTime = new DateTime(2010, 01, 02),
+                Decimal = 10.10M,
+                Guid = new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"),
+                Int = 123,
+                String = "123",
+                Dictionary = new Dictionary<Guid, string>() { { new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF"), "value1" } },
+
+                // Array of primitives
+                BoolArray = new bool[] { true, false },
+                DateTimeArray = new DateTime[] { new DateTime(2010, 01, 02), new DateTime(2011, 01, 02) },
+                DecimalArray = new decimal[] { 10.10M, 20.20M },
+                GuidArray = new Guid[] { new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), new Guid("8DA4C611-A758-4EB7-A352-9D82FE84DBD9") },
+                IntArray = new int[] { 123, 234 },
+                StringArray = new string[] { "123", "234" },
+
+                // List of primitives
+                BoolList = new List<bool>() { true, false },
+                DateTimeList = new List<DateTime>() { new DateTime(2010, 01, 02), new DateTime(2011, 01, 02) },
+                DecimalList = new List<decimal>() { 10.10M, 20.20M },
+                GuidList = new List<Guid>() { new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), new Guid("8DA4C611-A758-4EB7-A352-9D82FE84DBD9") },
+                IntList = new List<int>() { 123, 234 },
+                StringList = new List<string>() { "123", "234" }
+            };
+        }
+
+        public static void Assert(AutoMapper.Runtime.Extensions.UnitTesting.MapperTest.Cow cow)
+        {
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(true, cow.Bool);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new DateTime(2010, 01, 02), cow.DateTime);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(10.10M, cow.Decimal);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), cow.Guid);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(123, cow.Int);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("123", cow.String);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("value1", cow.Dictionary[new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF")]);
+
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(true, cow.BoolArray[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(false, cow.BoolArray[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new DateTime(2010, 01, 02), cow.DateTimeArray[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new DateTime(2011, 01, 02), cow.DateTimeArray[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(10.10M, cow.DecimalArray[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(20.20M, cow.DecimalArray[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), cow.GuidArray[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-9D82FE84DBD9"), cow.GuidArray[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(123, cow.IntArray[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(234, cow.IntArray[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("123", cow.StringArray[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("234", cow.StringArray[1]);
+
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(true, cow.BoolList[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(false, cow.BoolList[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new DateTime(2010, 01, 02), cow.DateTimeList[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new DateTime(2011, 01, 02), cow.DateTimeList[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(10.10M, cow.DecimalList[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(20.20M, cow.DecimalList[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), cow.GuidList[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-9D82FE84DBD9"), cow.GuidList[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(123, cow.IntList[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(234, cow.IntList[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("123", cow.StringList[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("234", cow.StringList[1]);
+        }
+    }
+
+    internal class Mule
+    {
+        public static AutoMapper.Runtime.Extensions.UnitTesting.MapperTest.Mule Create()
+        {
+            return new AutoMapper.Runtime.Extensions.UnitTesting.MapperTest.Mule()
+            {
+                Bool = true,
+                DateTime = new DateTime(2010, 01, 02),
+                Decimal = 10.10M,
+                Guid = new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"),
+                Int = 123,
+                String = "123",
+                Dictionary = new Dictionary<Guid, string>() { { new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF"), "value1" } },
+
+                // Array of primitives
+                BoolArray = new bool[] { true, false },
+                DateTimeArray = new DateTime[] { new DateTime(2010, 01, 02), new DateTime(2011, 01, 02) },
+                DecimalArray = new decimal[] { 10.10M, 20.20M },
+                GuidArray = new Guid[] { new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), new Guid("8DA4C611-A758-4EB7-A352-9D82FE84DBD9") },
+                IntArray = new int[] { 123, 234 },
+                StringArray = new string[] { "123", "234" },
+
+                // List of primitives
+                BoolList = new List<bool>() { true, false },
+                DateTimeList = new List<DateTime>() { new DateTime(2010, 01, 02), new DateTime(2011, 01, 02) },
+                DecimalList = new List<decimal>() { 10.10M, 20.20M },
+                GuidList = new List<Guid>() { new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), new Guid("8DA4C611-A758-4EB7-A352-9D82FE84DBD9") },
+                IntList = new List<int>() { 123, 234 },
+                StringList = new List<string>() { "123", "234" }
+            };
+        }
+
+        public static void Assert(AutoMapper.Runtime.Extensions.UnitTesting.MapperTest.Mule mule)
+        {
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(true, mule.Bool);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new DateTime(2010, 01, 02), mule.DateTime);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(10.10M, mule.Decimal);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), mule.Guid);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(123, mule.Int);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("123", mule.String);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("value1", mule.Dictionary[new Guid("46A93CC8-64A0-4D77-9600-4B694E40DEBF")]);
+
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(true, mule.BoolArray[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(false, mule.BoolArray[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new DateTime(2010, 01, 02), mule.DateTimeArray[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new DateTime(2011, 01, 02), mule.DateTimeArray[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(10.10M, mule.DecimalArray[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(20.20M, mule.DecimalArray[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), mule.GuidArray[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-9D82FE84DBD9"), mule.GuidArray[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(123, mule.IntArray[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(234, mule.IntArray[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("123", mule.StringArray[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("234", mule.StringArray[1]);
+
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(true, mule.BoolList[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(false, mule.BoolList[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new DateTime(2010, 01, 02), mule.DateTimeList[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new DateTime(2011, 01, 02), mule.DateTimeList[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(10.10M, mule.DecimalList[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(20.20M, mule.DecimalList[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-8D82FE84DBD9"), mule.GuidList[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new Guid("8DA4C611-A758-4EB7-A352-9D82FE84DBD9"), mule.GuidList[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(123, mule.IntList[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(234, mule.IntList[1]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("123", mule.StringList[0]);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("234", mule.StringList[1]);
+        }
     }
 }

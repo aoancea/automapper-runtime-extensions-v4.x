@@ -89,11 +89,12 @@ namespace AutoMapper.Runtime.Extensions
                 MapProperties(actualSourceType, actualDestinationType);
             }
 
-            typeof(AutoMapper.Mapper)
-                   .GetMethods(BindingFlags.Static | BindingFlags.Public)
-                   .First(mi => mi.Name == "CreateMap")
-                   .MakeGenericMethod(actualSourceType, actualDestinationType)
-                   .Invoke(null, null);
+            if (!primitiveTypes.Contains(actualSourceType) && !primitiveTypes.Contains(actualDestinationType))
+                typeof(AutoMapper.Mapper)
+                       .GetMethods(BindingFlags.Static | BindingFlags.Public)
+                       .First(mi => mi.Name == "CreateMap")
+                       .MakeGenericMethod(actualSourceType, actualDestinationType)
+                       .Invoke(null, null);
         }
 
         private static void MapProperties(Type sourceType, Type destinationType)
