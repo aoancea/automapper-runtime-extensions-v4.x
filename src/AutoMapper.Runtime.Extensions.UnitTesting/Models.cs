@@ -47,4 +47,14 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         public List<bool> BoolList { get; set; }
         #endregion
     }
+
+    internal class Cow : BaseClass
+    {
+
+    }
+
+    internal class Mule : BaseClass
+    {
+
+    }
 }

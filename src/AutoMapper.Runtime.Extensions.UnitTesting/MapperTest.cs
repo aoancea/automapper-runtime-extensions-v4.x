@@ -531,17 +531,6 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
 
             Assert.IsNull(destination.CircularReferenceProperty.CircularReferenceProperty);
         }
-
-
-        internal class Cow : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
-        {
-
-        }
-
-        internal class Mule : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
-        {
-
-        }
     }
 }
 
@@ -647,9 +636,9 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
 {
     internal class Cow_ClassHelper
     {
-        public static AutoMapper.Runtime.Extensions.UnitTesting.MapperTest.Cow Create()
+        public static Cow Create()
         {
-            return new AutoMapper.Runtime.Extensions.UnitTesting.MapperTest.Cow()
+            return new Cow()
             {
                 Bool = true,
                 DateTime = new DateTime(2010, 01, 02),
@@ -677,7 +666,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             };
         }
 
-        public static void Assert(AutoMapper.Runtime.Extensions.UnitTesting.MapperTest.Cow cow)
+        public static void Assert(Cow cow)
         {
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(true, cow.Bool);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new DateTime(2010, 01, 02), cow.DateTime);
@@ -717,9 +706,9 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
 
     internal class Mule_ClassHelper
     {
-        public static AutoMapper.Runtime.Extensions.UnitTesting.MapperTest.Mule Create()
+        public static Mule Create()
         {
-            return new AutoMapper.Runtime.Extensions.UnitTesting.MapperTest.Mule()
+            return new Mule()
             {
                 Bool = true,
                 DateTime = new DateTime(2010, 01, 02),
@@ -747,7 +736,7 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             };
         }
 
-        public static void Assert(AutoMapper.Runtime.Extensions.UnitTesting.MapperTest.Mule mule)
+        public static void Assert(Mule mule)
         {
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(true, mule.Bool);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(new DateTime(2010, 01, 02), mule.DateTime);
