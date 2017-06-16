@@ -1,4 +1,4 @@
-# 0.1.2-beta (2017-06-16)
+# 0.1.3-beta (2017-06-16)
 Added support for Arrays and Lists of primitive types mapping(*int*, *decimal*, *string*, etc)
 
 # 0.1.1-beta (2017-03-23)

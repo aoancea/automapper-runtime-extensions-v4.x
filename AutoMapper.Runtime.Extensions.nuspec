@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>AutoMapper.Runtime.Extensions.4.x</id>
-		<version>0.1.2-beta</version>
+		<version>0.1.3-beta</version>
 		<authors>Alex Oancea</authors>
 		<owners>Alex Oancea</owners>
 		<licenseUrl>https://github.com/aoancea/automapper-runtime-extensions-v4.x/blob/master/LICENSE</licenseUrl>
