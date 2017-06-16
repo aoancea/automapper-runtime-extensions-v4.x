@@ -73,36 +73,6 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
             Assert.AreEqual(Constants.String.value2, cow.StringList[1]);
         }
 
-        public static Mule Create_Mule()
-        {
-            return new Mule()
-            {
-                Bool = Constants.Bool.value1,
-                DateTime = Constants.DateTime.value1,
-                Decimal = Constants.Decimal.value1,
-                Guid = Constants.Guid.value1,
-                Int = Constants.Int.value1,
-                String = Constants.String.value1,
-                Dictionary = new Dictionary<Guid, string>() { { Constants.Guid.value3, "value1" } },
-
-                // Array of primitives
-                BoolArray = new bool[] { Constants.Bool.value1, Constants.Bool.value2 },
-                DateTimeArray = new DateTime[] { Constants.DateTime.value1, Constants.DateTime.value2 },
-                DecimalArray = new decimal[] { Constants.Decimal.value1, Constants.Decimal.value2 },
-                GuidArray = new Guid[] { Constants.Guid.value1, Constants.Guid.value2 },
-                IntArray = new int[] { Constants.Int.value1, Constants.Int.value2 },
-                StringArray = new string[] { Constants.String.value1, Constants.String.value2 },
-
-                // List of primitives
-                BoolList = new List<bool>() { Constants.Bool.value1, Constants.Bool.value2 },
-                DateTimeList = new List<DateTime>() { Constants.DateTime.value1, Constants.DateTime.value2 },
-                DecimalList = new List<decimal>() { Constants.Decimal.value1, Constants.Decimal.value2 },
-                GuidList = new List<Guid>() { Constants.Guid.value1, Constants.Guid.value2 },
-                IntList = new List<int>() { Constants.Int.value1, Constants.Int.value2 },
-                StringList = new List<string>() { Constants.String.value1, Constants.String.value2 }
-            };
-        }
-
         public static void Assert_Mule(Mule mule)
         {
             Assert.AreEqual(Constants.Bool.value1, mule.Bool);
