@@ -57,4 +57,101 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
     {
 
     }
+
+
+    #region A
+    internal class A_BigClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+        public A_FirstClass FirstClass { get; set; }
+
+        public A_SecondClass SecondClass { get; set; }
+    }
+
+    internal class A_FirstClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+        public A_FirstClassFirstSubClass FirstClassFirstSubClass { get; set; }
+
+        public A_FirstClassSecondSubClass FirstClassSecondSubClass { get; set; }
+    }
+
+    internal class A_FirstClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+
+    }
+
+    internal class A_FirstClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+
+    }
+
+    internal class A_SecondClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+        public A_SecondClassFirstSubClass SecondClassFirstSubClass { get; set; }
+
+        public A_SecondClassSecondSubClass SecondClassSecondSubClass { get; set; }
+    }
+
+    internal class A_SecondClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+
+    }
+
+    internal class A_SecondClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+
+    }
+
+    internal class A_CircularReference : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+        public A_CircularReference CircularReferenceProperty { get; set; }
+    }
+    #endregion
+
+    #region B
+    internal class B_BigClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+        public B_FirstClass FirstClass { get; set; }
+
+        public B_SecondClass SecondClass { get; set; }
+    }
+
+    internal class B_FirstClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+        public B_FirstClassFirstSubClass FirstClassFirstSubClass { get; set; }
+
+        public B_FirstClassSecondSubClass FirstClassSecondSubClass { get; set; }
+    }
+
+    internal class B_FirstClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+
+    }
+
+    internal class B_FirstClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+
+    }
+
+    internal class B_SecondClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+        public B_SecondClassFirstSubClass SecondClassFirstSubClass { get; set; }
+
+        public B_SecondClassSecondSubClass SecondClassSecondSubClass { get; set; }
+    }
+
+    internal class B_SecondClassFirstSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+
+    }
+
+    internal class B_SecondClassSecondSubClass : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+
+    }
+
+    internal class B_CircularReference : AutoMapper.Runtime.Extensions.UnitTesting.BaseClass
+    {
+        public B_CircularReference CircularReferenceProperty { get; set; }
+    }
+    #endregion
 }
