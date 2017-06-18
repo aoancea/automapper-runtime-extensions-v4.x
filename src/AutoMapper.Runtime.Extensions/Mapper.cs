@@ -80,25 +80,27 @@ namespace AutoMapper.Runtime.Extensions
 
             if (sourceType.IsGenericType && sourceType.GetGenericTypeDefinition() == typeof(Dictionary<,>))
             {
-                actualSourceType = sourceType.GetGenericArguments()[1];
-                actualDestinationType = destinationType.GetGenericArguments()[1];
+                Type keySourceType = sourceType.GetGenericArguments()[0];
+                Type keyDestinationType = destinationType.GetGenericArguments()[0];
 
-                MapProperties(actualSourceType, actualDestinationType);
+                CreateMap(keySourceType, keyDestinationType);
 
-                actualSourceType = typeof(KeyValuePair<,>).MakeGenericType(sourceType.GetGenericArguments()[0], sourceType.GetGenericArguments()[1]);
-                actualDestinationType = typeof(KeyValuePair<,>).MakeGenericType(destinationType.GetGenericArguments()[0], destinationType.GetGenericArguments()[1]);
+                Type valueSourceType = sourceType.GetGenericArguments()[1];
+                Type valueDestinationType = destinationType.GetGenericArguments()[1];
+
+                CreateMap(valueSourceType, valueDestinationType);
             }
             else
             {
                 MapProperties(actualSourceType, actualDestinationType);
-            }
 
-            if (!primitiveTypes.Contains(actualSourceType) && !primitiveTypes.Contains(actualDestinationType))
-                typeof(AutoMapper.Mapper)
-                       .GetMethods(BindingFlags.Static | BindingFlags.Public)
-                       .First(mi => mi.Name == "CreateMap")
-                       .MakeGenericMethod(actualSourceType, actualDestinationType)
-                       .Invoke(null, null);
+                if (!primitiveTypes.Contains(actualSourceType) && !primitiveTypes.Contains(actualDestinationType))
+                    typeof(AutoMapper.Mapper)
+                           .GetMethods(BindingFlags.Static | BindingFlags.Public)
+                           .First(mi => mi.Name == "CreateMap")
+                           .MakeGenericMethod(actualSourceType, actualDestinationType)
+                           .Invoke(null, null);
+            }
         }
 
         private static void MapProperties(Type sourceType, Type destinationType)

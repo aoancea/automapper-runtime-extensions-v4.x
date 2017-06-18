@@ -185,6 +185,56 @@ namespace AutoMapper.Runtime.Extensions.UnitTesting
         }
 
         [TestMethod]
+        public void DeepCopyTo_DictionaryToDictionaryOfSameTypeWithCustomValue_DestinationCopied()
+        {
+            Dictionary<Guid, Cow> source = new Dictionary<Guid, Cow>()
+            {
+                { new Guid("35B5042A-24B9-4308-91CA-806FDEFFCE20"), ScenarioHelper.Create_Cow() },
+                { new Guid("59236B13-AFBC-4C87-94DD-F0010A2319C1"), ScenarioHelper.Create_Cow() },
+                { new Guid("ADF639AB-4AB4-48BC-BAC0-E25DC9915F08"), ScenarioHelper.Create_Cow() },
+            };
+
+            Dictionary<Guid, Cow> destination = source.DeepCopyTo<Dictionary<Guid, Cow>>();
+
+            Cow destinationItem1 = destination[new Guid("35B5042A-24B9-4308-91CA-806FDEFFCE20")];
+            Cow destinationItem2 = destination[new Guid("59236B13-AFBC-4C87-94DD-F0010A2319C1")];
+            Cow destinationItem3 = destination[new Guid("ADF639AB-4AB4-48BC-BAC0-E25DC9915F08")];
+
+            Assert.AreNotEqual(source[new Guid("35B5042A-24B9-4308-91CA-806FDEFFCE20")], destinationItem1);
+            Assert.AreNotEqual(source[new Guid("59236B13-AFBC-4C87-94DD-F0010A2319C1")], destinationItem2);
+            Assert.AreNotEqual(source[new Guid("ADF639AB-4AB4-48BC-BAC0-E25DC9915F08")], destinationItem3);
+
+            ScenarioHelper.Assert_Cow(destinationItem1);
+            ScenarioHelper.Assert_Cow(destinationItem2);
+            ScenarioHelper.Assert_Cow(destinationItem3);
+        }
+
+        [TestMethod]
+        public void DeepCopyTo_DictionaryToDictionaryDifferentTypesWithCustomValue_DestinationCopied()
+        {
+            Dictionary<Guid, Cow> source = new Dictionary<Guid, Cow>()
+            {
+                { new Guid("35B5042A-24B9-4308-91CA-806FDEFFCE20"), ScenarioHelper.Create_Cow() },
+                { new Guid("59236B13-AFBC-4C87-94DD-F0010A2319C1"), ScenarioHelper.Create_Cow() },
+                { new Guid("ADF639AB-4AB4-48BC-BAC0-E25DC9915F08"), ScenarioHelper.Create_Cow() },
+            };
+
+            Dictionary<Guid, Mule> destination = source.DeepCopyTo<Dictionary<Guid, Mule>>();
+
+            Mule destinationItem1 = destination[new Guid("35B5042A-24B9-4308-91CA-806FDEFFCE20")];
+            Mule destinationItem2 = destination[new Guid("59236B13-AFBC-4C87-94DD-F0010A2319C1")];
+            Mule destinationItem3 = destination[new Guid("ADF639AB-4AB4-48BC-BAC0-E25DC9915F08")];
+
+            Assert.AreNotEqual(source[new Guid("35B5042A-24B9-4308-91CA-806FDEFFCE20")], destinationItem1);
+            Assert.AreNotEqual(source[new Guid("59236B13-AFBC-4C87-94DD-F0010A2319C1")], destinationItem2);
+            Assert.AreNotEqual(source[new Guid("ADF639AB-4AB4-48BC-BAC0-E25DC9915F08")], destinationItem3);
+
+            ScenarioHelper.Assert_Mule(destinationItem1);
+            ScenarioHelper.Assert_Mule(destinationItem2);
+            ScenarioHelper.Assert_Mule(destinationItem3);
+        }
+
+        [TestMethod]
         public void DeepCopyTo_WhenSourceAndDestinationHaveDifferentAggregatedTypes_ThenDestinationIsCopied()
         {
             A_BigClass source = new A_BigClass()
